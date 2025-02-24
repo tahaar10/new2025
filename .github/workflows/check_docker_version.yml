@@ -1,0 +1,20 @@
+name: Check Docker Version
+
+# تحديد الأحداث التي ستشغل سير العمل
+on:
+  push:
+    branches:
+      - main  # يمكنك تغيير هذا إلى أي فرع تريده
+
+jobs:
+  check-docker-version:
+    runs-on: ubuntu-latest  # تحديد البيئة التي سيعمل عليها سير العمل (في هذه الحالة Ubuntu)
+
+    steps:
+      # الخطوة 1: قم بسحب الكود من المستودع
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # الخطوة 2: تحقق من إصدار Docker
+      - name: Show Docker Version
+        run: docker --version
